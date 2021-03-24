@@ -1,5 +1,7 @@
 package fr.esiea.ex4A.Api_inscription;
 
+import java.util.Objects;
+
 public class InscriptionData {
 
     public final String userName;
@@ -23,5 +25,20 @@ public class InscriptionData {
         userCountry = null;
         userSex = null;
         userSexPref = null;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InscriptionData userData = (InscriptionData) o;
+        return Objects.equals(userName, userData.userName) &&
+            Objects.equals(userEmail, userData.userEmail) &&
+            Objects.equals(userTweeter, userData.userTweeter) &&
+            Objects.equals(userCountry, userData.userCountry) &&
+            Objects.equals(userSexPref, userData.userSexPref);
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, userEmail, userTweeter, userCountry, userSexPref);
     }
 }

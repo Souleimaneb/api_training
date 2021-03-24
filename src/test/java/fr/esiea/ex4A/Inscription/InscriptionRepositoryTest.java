@@ -1,33 +1,29 @@
-package fr.esiea.ex4A.hello;
+package fr.esiea.ex4A.Inscription;
 
+import fr.esiea.ex4A.Api_inscription.InscriptionData;
+import fr.esiea.ex4A.Api_inscription.InscriptionRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
+class InscriptionRepositoryTest {
 
-class HelloRepositoryTest {
-
-    private final HelloRepository helloRepository = new HelloRepository();
+    private final InscriptionRepository inscriptionRepository = new InscriptionRepository();
 
     @Test
-    void randomHello_returns_an_hello_based_on_internal_list() {
-        HelloData helloData = helloRepository.randomHello();
-
-        assertThat(helloData.name).isIn(helloRepository.names);
-        assertThat(helloData.type).isEqualTo("hello");
-        assertThat(helloData.completeSentence).startsWith("hello ").endsWith("!");
+    void cheking_user_on_list() {
+        InscriptionData user = new InscriptionData("Name", "Name@mail.com",
+            "tweeter", "FR", "M", "M");
+        inscriptionRepository.addUser(user);
+        Assertions.assertTrue(inscriptionRepository.utilisateurAdd(user));
+        Assertions.assertEquals(1, inscriptionRepository.users.size());
     }
 
-    @ParameterizedTest
-    @CsvSource({
-            "aby, aby",
-            "Broly, Broly Broly",
-            "cuevin, cuevin cuevin cuevin",
-    })
-    void hello_for_name_repeats_it_according_to_its_first_letter(String inputName, String expectedOutputName) {
-        HelloData helloData = helloRepository.getHelloFor(inputName);
+    @Test
+    void Default_add() {
+        InscriptionData user = new InscriptionData();
+        inscriptionRepository.addUser(user);
 
-        assertThat(helloData.name).isEqualTo(expectedOutputName);
+        Assertions.assertTrue(inscriptionRepository.utilisateurAdd(user));
+        Assertions.assertEquals(1, inscriptionRepository.users.size());
     }
 }
