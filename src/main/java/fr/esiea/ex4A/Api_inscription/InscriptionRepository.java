@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-class InscriptionRepository {
+public class InscriptionRepository {
     public final List<InscriptionData> users = new ArrayList<>();
     public InscriptionData addUser(InscriptionData user) {
         users.add(user);
@@ -15,11 +15,11 @@ class InscriptionRepository {
     public boolean utilisateurAdd(InscriptionData user) {
         return stockageuser(users, user);
     }
-    private boolean stockageuser(List<InscriptionData> users, InscriptionData UserVerif) {
+    private boolean stockageuser(List<InscriptionData> users, InscriptionData userVerif) {boolean result = false;
         for (InscriptionData object : users) {
-            if (object.equals(UserVerif))
-                return true;
+            if (object.equals(userVerif))
+                result = true;
         }
-        return false;
+        return result;
     }
 }
