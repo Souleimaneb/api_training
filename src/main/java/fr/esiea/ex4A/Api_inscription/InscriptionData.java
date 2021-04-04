@@ -10,15 +10,21 @@ public class InscriptionData {
     public final String userCountry;
     public final String userSex;
     public final String userSexPref;
+    public final Integer userAge;
+
     public InscriptionData(String userName, String userEmail, String userTweeter, String userCountry,
-                           String userSex, String userSexPref) {
+                           String userSex, String userSexPref, Integer userAge) {
         this.userName = userName;
         this.userTweeter = userTweeter;
         this.userCountry = userCountry;
         this.userSex = userSex;
         this.userSexPref = userSexPref;
         this.userEmail = userEmail;
-    }public InscriptionData() {
+        this.userAge = userAge;
+    }
+
+    public InscriptionData() {
+        userAge = null;
         userName = null;
         userEmail = null;
         userTweeter = null;
@@ -35,10 +41,11 @@ public class InscriptionData {
             Objects.equals(userEmail, userData.userEmail) &&
             Objects.equals(userTweeter, userData.userTweeter) &&
             Objects.equals(userCountry, userData.userCountry) &&
-            Objects.equals(userSexPref, userData.userSexPref);
+            Objects.equals(userSexPref, userData.userSexPref) &&
+            Objects.equals(userAge, userData.userAge);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(userName, userEmail, userTweeter, userCountry, userSexPref);
+        return Objects.hash(userName, userEmail, userTweeter, userCountry, userSexPref, userAge);
     }
 }

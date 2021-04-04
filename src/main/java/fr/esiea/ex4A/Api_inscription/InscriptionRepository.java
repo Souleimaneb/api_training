@@ -12,6 +12,14 @@ public class InscriptionRepository {
         users.add(user);
         return user;
     }
+    public InscriptionData getUserByUsernameAndCountry(String userName, String country) {
+        for(InscriptionData u : users) {
+            if (u.userCountry.equals(country) && u.userName.equals(userName)){
+                return u;
+            }
+        }
+        return null;
+    }
     public boolean utilisateurAdd(InscriptionData user) {
         return stockageuser(users, user);
     }

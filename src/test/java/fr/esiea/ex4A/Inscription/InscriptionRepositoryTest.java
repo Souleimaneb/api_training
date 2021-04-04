@@ -12,7 +12,7 @@ class InscriptionRepositoryTest {
     @Test
     void cheking_user_on_list() {
         InscriptionData user = new InscriptionData("Name", "Name@mail.com",
-            "tweeter", "FR", "M", "M");
+            "tweeter", "FR", "M", "M", 10);
         inscriptionRepository.addUser(user);
         Assertions.assertTrue(inscriptionRepository.utilisateurAdd(user));
         Assertions.assertEquals(1, inscriptionRepository.users.size());
